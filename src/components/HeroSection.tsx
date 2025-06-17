@@ -25,7 +25,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center">
+    <section className="relative overflow-hidden h-[75vh] flex items-center">
       <div 
         className="absolute inset-0 parallax-bg"
         style={{
@@ -36,7 +36,7 @@ const HeroSection = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60"></div>
         
-        {/* Floating Elements - Birds and Clouds */}
+        {/* Floating Elements */}
         <motion.div 
           className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full blur-xl"
           animate={{
@@ -62,21 +62,6 @@ const HeroSection = () => {
             delay: 2
           }}
         />
-        
-        {/* Flying Bird Animation */}
-        <motion.div
-          className="absolute top-32 w-full h-8"
-          animate={{
-            x: [-100, window.innerWidth + 100]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        >
-          <div className="text-white/60 text-2xl">🕊️</div>
-        </motion.div>
       </div>
 
       <div className="relative container-max">
@@ -88,16 +73,16 @@ const HeroSection = () => {
             animate="visible"
           >
             <motion.div 
-              className="inline-flex items-center space-x-2 px-6 py-3 bg-white/20 backdrop-blur-md rounded-full mb-8 border border-white/30"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-white/20 backdrop-blur-md rounded-full mb-6 border border-white/30"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <Star className="w-5 h-5 text-yellow-400" />
-              <span className="text-sm font-semibold">भारत का #1 सेवा यात्रा मंच</span>
+              <Star className="w-4 h-4 text-yellow-400" />
+              <span className="text-xs font-semibold">भारत का #1 सेवा यात्रा मंच</span>
             </motion.div>
 
             <motion.h1 
-              className="hero-title mb-8 text-glow"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-glow leading-tight"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
@@ -107,7 +92,7 @@ const HeroSection = () => {
             </motion.h1>
 
             <motion.p 
-              className="text-xl mb-10 text-gray-100 leading-relaxed max-w-2xl"
+              className="text-lg mb-8 text-gray-100 leading-relaxed max-w-2xl"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
@@ -115,25 +100,25 @@ const HeroSection = () => {
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6"
+              className="flex flex-col sm:flex-row gap-4"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <Link to="/browse">
                 <motion.button 
-                  className="yatra-btn-primary group ripple-effect"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(248, 203, 116, 0.4)" }}
-                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 hover:shadow-xl transition-all duration-300 ripple-effect group"
+                  whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(248, 203, 116, 0.4)" }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   🌿 Start Your Yatra
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </motion.button>
               </Link>
               <Link to="/host">
                 <motion.button 
-                  className="yatra-btn-secondary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-xl border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   🌾 Host a Change-Maker
                 </motion.button>
@@ -141,13 +126,13 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.div 
-              className="flex items-center space-x-8 mt-12 text-sm text-gray-300"
+              className="flex items-center space-x-6 mt-10 text-sm text-gray-300"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="flex items-center space-x-2">
                 <motion.div 
-                  className="w-3 h-3 bg-green-400 rounded-full"
+                  className="w-2 h-2 bg-green-400 rounded-full"
                   animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
@@ -156,23 +141,6 @@ const HeroSection = () => {
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
                 <span>350+ yatras completed</span>
-              </div>
-            </motion.div>
-
-            {/* Scroll Indicator */}
-            <motion.div 
-              className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <div className="flex flex-col items-center text-white/60">
-                <span className="text-sm mb-2">Scroll to explore</span>
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                >
-                  ✨
-                </motion.div>
               </div>
             </motion.div>
           </motion.div>
@@ -198,19 +166,19 @@ const HeroSection = () => {
             >
               <div className="text-center">
                 <motion.div 
-                  className="text-6xl mb-6"
+                  className="text-5xl mb-4"
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 >
                   🪔
                 </motion.div>
-                <h3 className="card-title mb-4 text-gray-800">Your Karma Trail</h3>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Your Karma Trail</h3>
                 
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-yellow-50 rounded-lg">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-yellow-50 rounded-lg">
                     <span className="text-sm font-medium text-gray-700">Impact Level</span>
                     <motion.span 
-                      className="font-bold text-2xl karma-glow"
+                      className="font-bold text-xl karma-glow"
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -219,7 +187,7 @@ const HeroSection = () => {
                   </div>
                   
                   <div className="relative">
-                    <div className="karma-progress-bar h-3 rounded-full">
+                    <div className="karma-progress-bar h-2 rounded-full">
                       <motion.div 
                         className="karma-progress-fill h-full rounded-full"
                         initial={{ width: 0 }}
@@ -227,7 +195,7 @@ const HeroSection = () => {
                         transition={{ duration: 2, delay: 1 }}
                       />
                     </div>
-                    <p className="text-xs text-gray-600 mt-3">यह सिर्फ सफर नहीं, एक सेवा है</p>
+                    <p className="text-xs text-gray-600 mt-2">यह सिर्फ सफर नहीं, एक सेवा है</p>
                   </div>
                 </div>
               </div>
@@ -238,7 +206,7 @@ const HeroSection = () => {
 
       {/* Enhanced Wavy Bottom Divider */}
       <div className="absolute bottom-0 left-0 w-full">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-20">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16">
           <motion.path 
             d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
             fill="#F9F7F4"

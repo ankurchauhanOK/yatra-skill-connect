@@ -60,7 +60,7 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-br from-orange-50 via-yellow-50 to-green-50 relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-orange-50 via-yellow-50 to-green-50 relative overflow-hidden h-screen flex items-center">
       {/* Clay Texture Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-100/50 to-yellow-100/50"></div>
@@ -80,24 +80,19 @@ const HowItWorks = () => {
 
       <div className="container-max relative">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.div
-            className="inline-block mb-4"
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          >
-            🛤️
-          </motion.div>
-          <h2 className="section-title text-gray-900 mb-6">Your Journey to Service</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Your Journey to Service</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Four simple steps on the path to meaningful change
           </p>
-          <p className="text-sm text-orange-600 mt-2 font-medium">यात्रा से सेवा तक</p>
+          <p className="text-lg font-bold text-orange-600 mt-2" style={{ fontFamily: 'Noto Sans Devanagari, sans-serif' }}>
+            यात्रा से सेवा तक
+          </p>
         </motion.div>
         
         {/* Timeline Path */}
@@ -111,7 +106,7 @@ const HowItWorks = () => {
           />
           
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -125,41 +120,25 @@ const HowItWorks = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <motion.div 
-                  className="yatra-card text-center relative overflow-hidden bg-white/90 backdrop-blur-sm"
+                  className="yatra-card text-center relative overflow-hidden bg-white/90 backdrop-blur-sm h-64"
                   whileHover={{ 
                     y: -10,
                     boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Walking Path Animation */}
                   <motion.div 
-                    className="absolute -top-4 left-1/2 transform -translate-x-1/2"
-                    animate={{ 
-                      y: [0, -5, 0],
-                      rotate: index % 2 === 0 ? [0, 2, 0] : [0, -2, 0]
-                    }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity,
-                      delay: index * 0.5
-                    }}
-                  >
-                    👣
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="flex justify-center mb-8 mt-6"
+                    className="flex justify-center mb-6 mt-4"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center shadow-lg`}>
-                      <step.icon className="w-10 h-10 text-white" />
+                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center shadow-lg`}>
+                      <step.icon className="w-8 h-8 text-white" />
                     </div>
                   </motion.div>
 
                   <motion.div 
-                    className="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg"
+                    className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg"
                     animate={{ 
                       scale: [1, 1.1, 1],
                       rotate: [0, 180, 360]
@@ -173,9 +152,11 @@ const HowItWorks = () => {
                     <span className="text-white font-bold text-sm">{step.step}</span>
                   </motion.div>
 
-                  <h3 className="card-title mb-2 text-gray-900">{step.title}</h3>
-                  <p className="text-xs text-orange-600 font-medium mb-4">{step.hindi}</p>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">{step.title}</h3>
+                  <p className="text-sm text-orange-600 font-bold mb-3" style={{ fontFamily: 'Noto Sans Devanagari, sans-serif' }}>
+                    {step.hindi}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed text-sm px-2">{step.description}</p>
 
                   {/* Hover Effect Background */}
                   <motion.div 
@@ -189,43 +170,22 @@ const HowItWorks = () => {
           </motion.div>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="flex justify-center mt-16 space-x-8">
-          {['🏞️', '🌾', '🪔', '🕊️'].map((emoji, index) => (
-            <motion.div
-              key={index}
-              className="text-3xl"
-              animate={{ 
-                y: [0, -10, 0],
-                rotate: [0, 5, -5, 0]
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity,
-                delay: index * 0.5
-              }}
-            >
-              {emoji}
-            </motion.div>
-          ))}
-        </div>
-
         {/* Bottom CTA */}
         <motion.div 
-          className="text-center mt-16"
+          className="text-center mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-600 mb-6">Ready to walk the path of service?</p>
+          <p className="text-gray-600 mb-4">Ready to walk the path of service?</p>
           <motion.button 
-            className="yatra-btn-accent ripple-effect"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 hover:shadow-xl transition-all duration-300 ripple-effect"
             whileHover={{ 
-              scale: 1.05,
+              scale: 1.02,
               boxShadow: "0 10px 30px rgba(248, 203, 116, 0.4)"
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.98 }}
           >
             🎒 Begin Your Seva Yatra
           </motion.button>

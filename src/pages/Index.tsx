@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
+import KarmaTrailSection from '@/components/KarmaTrailSection';
 import HowItWorks from '@/components/HowItWorks';
 import OpportunityCards from '@/components/OpportunityCards';
 import BecomeHostSection from '@/components/BecomeHostSection';
@@ -40,6 +41,7 @@ const Index = () => {
       <Navigation />
       
       <HeroSection />
+      <KarmaTrailSection />
       <HowItWorks />
       <OpportunityCards />
       <BecomeHostSection />
