@@ -20,8 +20,7 @@ const HeroSection = () => {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      y: 0
     }
   };
 
@@ -91,6 +90,7 @@ const HeroSection = () => {
             <motion.div 
               className="inline-flex items-center space-x-2 px-6 py-3 bg-white/20 backdrop-blur-md rounded-full mb-8 border border-white/30"
               variants={itemVariants}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <Star className="w-5 h-5 text-yellow-400" />
               <span className="text-sm font-semibold">भारत का #1 सेवा यात्रा मंच</span>
@@ -99,6 +99,7 @@ const HeroSection = () => {
             <motion.h1 
               className="hero-title mb-8 text-glow"
               variants={itemVariants}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               Travel with Purpose.<br />
               <span className="text-yellow-300">Serve with Heart.</span><br />
@@ -108,6 +109,7 @@ const HeroSection = () => {
             <motion.p 
               className="text-xl mb-10 text-gray-100 leading-relaxed max-w-2xl"
               variants={itemVariants}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               Volunteer across Indian villages and create real change. Join hands with rural communities. Explore, volunteer, and grow on a meaningful journey.
             </motion.p>
@@ -115,6 +117,7 @@ const HeroSection = () => {
             <motion.div 
               className="flex flex-col sm:flex-row gap-6"
               variants={itemVariants}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <Link to="/browse">
                 <motion.button 
@@ -140,6 +143,7 @@ const HeroSection = () => {
             <motion.div 
               className="flex items-center space-x-8 mt-12 text-sm text-gray-300"
               variants={itemVariants}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="flex items-center space-x-2">
                 <motion.div 

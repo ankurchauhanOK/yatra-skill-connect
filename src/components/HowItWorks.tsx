@@ -55,8 +55,7 @@ const HowItWorks = () => {
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      scale: 1
     }
   };
 
@@ -119,7 +118,12 @@ const HowItWorks = () => {
             viewport={{ once: true }}
           >
             {steps.map((step, index) => (
-              <motion.div key={index} className="relative group" variants={stepVariants}>
+              <motion.div 
+                key={index} 
+                className="relative group" 
+                variants={stepVariants}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
                 <motion.div 
                   className="yatra-card text-center relative overflow-hidden bg-white/90 backdrop-blur-sm"
                   whileHover={{ 

@@ -65,8 +65,7 @@ const OpportunityCards = () => {
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      scale: 1
     }
   };
 
@@ -173,8 +172,8 @@ const OpportunityCards = () => {
               key={opportunity.id} 
               className="group cursor-pointer"
               variants={cardVariants}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               whileHover={{ y: -10 }}
-              transition={{ duration: 0.3 }}
             >
               <div className="yatra-card overflow-hidden relative">
                 {/* Image with Overlay */}
