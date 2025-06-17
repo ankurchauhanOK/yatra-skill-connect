@@ -1,316 +1,164 @@
 
 import React from 'react';
-import { MapPin, Clock, Users, ArrowRight } from 'lucide-react';
+import { ArrowRight, MapPin, Calendar, Users, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const OpportunityCards = () => {
   const opportunities = [
     {
       id: 1,
-      title: 'Digital Literacy for Artisans',
+      title: 'Teach Digital Skills',
       location: 'Udaipur, Rajasthan',
-      skill: 'Web Development',
-      duration: '2 weeks',
-      hostImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face',
-      hostName: 'Rajesh Kumar',
-      description: 'Help traditional craftsmen create online presence for their handmade products',
-      karma: 120,
-      verified: true,
-      hindi: 'डिजिटल साक्षरता',
-      bgImage: 'https://images.unsplash.com/photo-1493962853295-0fd70327578a?w=400&h=250&fit=crop'
+      duration: '2-4 weeks',
+      image: 'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=400&h=300&fit=crop',
+      description: 'Help local artisans digitize their craft business',
+      skills: ['Teaching', 'Technology'],
+      participants: 12,
+      rating: 4.8,
+      urgency: 'High'
     },
     {
       id: 2,
-      title: 'Environmental Education Program',
+      title: 'Sustainable Farming',
       location: 'Coorg, Karnataka',
-      skill: 'Teaching',
-      duration: '3 weeks',
-      hostImage: 'https://images.unsplash.com/photo-1494790108755-2616b332c3c7?w=60&h=60&fit=crop&crop=face',
-      hostName: 'Priya Nair',
-      description: 'Teach sustainable farming practices to local youth and farmers',
-      karma: 150,
-      verified: true,
-      hindi: 'पर्यावरण शिक्षा',
-      bgImage: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=250&fit=crop'
+      duration: '1-2 months',
+      image: 'https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?w=400&h=300&fit=crop',
+      description: 'Introduce organic farming techniques to coffee growers',
+      skills: ['Agriculture', 'Environment'],
+      participants: 8,
+      rating: 4.9,
+      urgency: 'Medium'
     },
     {
       id: 3,
-      title: 'Rural Healthcare Documentation',
+      title: 'Healthcare Support',
       location: 'Dharamshala, Himachal Pradesh',
-      skill: 'Photography',
-      duration: '1 week',
-      hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face',
-      hostName: 'Dr. Arun Singh',
-      description: 'Document healthcare initiatives and create awareness materials',
-      karma: 100,
-      verified: true,
-      hindi: 'स्वास्थ्य प्रलेखन',
-      bgImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop'
+      duration: '3-6 weeks',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+      description: 'Support rural health camps and wellness programs',
+      skills: ['Healthcare', 'Community'],
+      participants: 15,
+      rating: 5.0,
+      urgency: 'High'
+    },
+    {
+      id: 4,
+      title: 'Women Empowerment',
+      location: 'Pushkar, Rajasthan',
+      duration: '4-8 weeks',
+      image: 'https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=400&h=300&fit=crop',
+      description: 'Build self-help groups and skill development programs',
+      skills: ['Training', 'Empowerment'],
+      participants: 10,
+      rating: 4.7,
+      urgency: 'Medium'
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1
-    }
-  };
-
   return (
-    <section className="section-padding bg-gradient-to-br from-green-50 via-white to-blue-50 relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0">
+    <section className="py-16 bg-white">
+      <div className="container-max">
         <motion.div 
-          className="absolute top-20 left-20 w-32 h-32 bg-green-200/30 rounded-full blur-2xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-20 w-40 h-40 bg-blue-200/30 rounded-full blur-2xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.5, 0.2],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-      </div>
-
-      <div className="container-max relative">
-        <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <motion.div
-            className="text-5xl mb-6"
-            animate={{ 
-              rotate: [0, 10, -10, 0],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ duration: 4, repeat: Infinity }}
-          >
-            🗺️
-          </motion.div>
-          <h2 className="section-title text-gray-900 mb-6">Find Where You're Needed Most</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-4">
-            From teaching in hill schools to building compost pits in deserts — choose how you want to help
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Find Where You're Needed Most</h2>
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            Real opportunities to make a difference in rural communities
           </p>
-          <p className="text-green-600 font-medium">अपना योगदान चुनें</p>
-          
-          {/* Enhanced Filter Tags */}
-          <motion.div 
-            className="flex flex-wrap justify-center gap-4 mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            {[
-              { name: 'All Skills', emoji: '🌟' },
-              { name: 'Environment', emoji: '🌱' },
-              { name: 'Education', emoji: '📚' },
-              { name: 'Health', emoji: '🏥' },
-              { name: 'Technology', emoji: '💻' },
-              { name: 'Arts', emoji: '🎨' }
-            ].map((filter, index) => (
-              <motion.button 
-                key={filter.name} 
-                className="skill-badge hover:scale-105 transition-all bg-white/80 backdrop-blur-sm border border-green-200"
-                whileHover={{ 
-                  scale: 1.05,
-                  backgroundColor: "hsl(var(--forest-green))",
-                  color: "white"
-                }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <span className="mr-2">{filter.emoji}</span>
-                {filter.name}
-              </motion.button>
-            ))}
-          </motion.div>
         </motion.div>
         
-        <motion.div 
-          className="grid md:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {opportunities.map((opportunity, index) => (
-            <motion.div 
-              key={opportunity.id} 
+            <motion.div
+              key={opportunity.id}
               className="group cursor-pointer"
-              variants={cardVariants}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              whileHover={{ y: -10 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8 }}
             >
-              <div className="yatra-card overflow-hidden relative">
-                {/* Image with Overlay */}
-                <div className="relative mb-6 overflow-hidden rounded-xl">
-                  <motion.img 
-                    src={opportunity.bgImage}
+              <div className="yatra-card overflow-hidden h-full bg-white shadow-sm border border-gray-100">
+                <div className="relative h-40 overflow-hidden">
+                  <img 
+                    src={opportunity.image} 
                     alt={opportunity.title}
-                    className="w-full h-48 object-cover transition-transform duration-500"
-                    whileHover={{ scale: 1.1 }}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  
-                  {/* Karma Badge */}
-                  <motion.div 
-                    className="absolute top-3 right-3"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <div className="skill-badge bg-white/90 text-green-700 font-semibold backdrop-blur-sm">
-                      ✨ {opportunity.karma} Karma
-                    </div>
-                  </motion.div>
-                  
-                  {/* Location Badge */}
-                  <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                    <div className="flex items-center space-x-1 text-sm text-gray-700">
-                      <MapPin className="w-3 h-3" />
-                      <span>{opportunity.location}</span>
-                    </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1">
+                    <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                    <span className="text-xs font-semibold">{opportunity.rating}</span>
+                  </div>
+                  <div className={`absolute top-3 left-3 px-2 py-1 rounded-full text-xs font-semibold ${
+                    opportunity.urgency === 'High' ? 'bg-red-500 text-white' : 'bg-yellow-500 text-white'
+                  }`}>
+                    {opportunity.urgency} Need
                   </div>
                 </div>
-                
-                {/* Host Info */}
-                <div className="flex items-center space-x-3 mb-4">
-                  <motion.img 
-                    src={opportunity.hostImage}
-                    alt={opportunity.hostName}
-                    className="w-12 h-12 rounded-full border-3 border-white shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                  />
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{opportunity.hostName}</h3>
+
+                <div className="p-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <MapPin className="w-3 h-3 text-gray-500" />
+                    <span className="text-xs text-gray-600">{opportunity.location}</span>
+                  </div>
+                  
+                  <h3 className="font-semibold text-gray-900 mb-2 text-center">{opportunity.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-3 text-center">{opportunity.description}</p>
+                  
+                  <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                     <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <span className="text-xs text-green-600 font-medium">Verified Host</span>
+                      <Calendar className="w-3 h-3" />
+                      <span>{opportunity.duration}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Users className="w-3 h-3" />
+                      <span>{opportunity.participants} volunteers</span>
                     </div>
                   </div>
-                </div>
-                
-                {/* Content */}
-                <h4 className="card-title mb-2 text-gray-900">{opportunity.title}</h4>
-                <p className="text-sm text-green-600 font-medium mb-3">{opportunity.hindi}</p>
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed">{opportunity.description}</p>
-                
-                {/* Duration */}
-                <div className="flex items-center justify-between mb-6 text-sm text-gray-500">
-                  <div className="flex items-center space-x-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{opportunity.duration}</span>
+                  
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {opportunity.skills.map((skill, skillIndex) => (
+                      <span key={skillIndex} className="skill-badge text-xs">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
-                  <div className="skill-badge text-xs">{opportunity.skill}</div>
-                </div>
-                
-                {/* CTA */}
-                <motion.button 
-                  className="yatra-btn-accent w-full group flex items-center justify-center"
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 10px 25px rgba(168, 109, 63, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Apply for Seva
-                  <motion.div
-                    className="ml-2"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                  
+                  <motion.button 
+                    className="w-full text-center py-2 px-3 text-xs font-semibold text-blue-600 hover:text-blue-800 border border-blue-200 hover:border-blue-400 rounded-lg transition-colors duration-300 flex items-center justify-center space-x-1"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.div>
-                </motion.button>
-                
-                {/* Floating Elements */}
-                <motion.div
-                  className="absolute -top-2 -left-2 text-yellow-400 opacity-0 group-hover:opacity-100"
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  ✨
-                </motion.div>
+                    <span>Apply for Seva</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
-        
-        {/* Bottom CTA */}
+        </div>
+
         <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
           <motion.button 
-            className="yatra-btn-primary group"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 15px 35px rgba(76, 107, 60, 0.4)"
-            }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:shadow-lg transition-all duration-300 ripple-effect"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             🌍 Explore All Opportunities
-            <motion.div
-              className="ml-2"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <ArrowRight className="w-5 h-5" />
-            </motion.div>
+            <ArrowRight className="ml-2 w-4 h-4" />
           </motion.button>
-          <p className="text-gray-500 mt-4 text-sm">सभी अवसर देखें • Find your calling</p>
         </motion.div>
-      </div>
-
-      {/* Bottom Wave Divider */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-16">
-          <motion.path 
-            d="M0,60L48,56C96,52,192,44,288,48C384,52,480,68,576,72C672,76,768,68,864,60C960,52,1056,44,1152,48L1200,52V120H1152C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120H0V60Z" 
-            fill="#FFFFFF"
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            transition={{ duration: 2 }}
-            viewport={{ once: true }}
-          />
-        </svg>
       </div>
     </section>
   );
