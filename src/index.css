@@ -1,10 +1,9 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:wght@400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* YatraConnect Design System - Enhanced Rural Minimalism */
+/* YatraConnect Enhanced Design System - Cinematic Typography & Animations */
 
 @layer base {
   :root {
@@ -55,41 +54,56 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 1.7;
-    font-size: 18px;
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    scroll-behavior: smooth;
   }
 
+  /* Enhanced Typography Hierarchy */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.025em;
   }
 
   h1 {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
   }
 
   h2 {
-    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 600;
   }
 
   h3 {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    font-weight: 600;
+  }
+
+  /* Hindi Typography */
+  .hindi-text {
+    font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
+    font-weight: 700 !important;
+  }
+
+  /* Button Typography */
+  button, .btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
   }
 
   @media (max-width: 768px) {
     body {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 }
 
 @layer components {
+  /* Enhanced Gradient Systems */
   .yatra-hero-gradient {
     background: linear-gradient(135deg, 
       hsl(var(--forest-green)) 0%, 
@@ -109,15 +123,18 @@
       hsl(var(--warm-clay)) 100%);
   }
   
+  /* Enhanced Text Effects */
   .karma-glow {
-    @apply animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent font-bold;
+    @apply bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent font-bold;
+    animation: karma-pulse 3s ease-in-out infinite;
   }
   
   .skill-badge {
-    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300;
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300;
     background: linear-gradient(135deg, hsl(var(--mustard-gold) / 0.2), hsl(var(--warm-clay) / 0.2));
     color: hsl(var(--forest-green));
     border: 1px solid hsl(var(--mustard-gold) / 0.3);
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   
   .skill-badge:hover {
@@ -127,8 +144,9 @@
     transform: translateY(-2px);
   }
   
+  /* Enhanced Card System */
   .yatra-card {
-    @apply bg-card border border-border rounded-2xl p-8 shadow-sm backdrop-blur-sm;
+    @apply bg-card border border-border rounded-2xl p-6 shadow-sm backdrop-blur-sm;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: linear-gradient(135deg, 
       hsl(var(--soft-cream)) 0%, 
@@ -136,31 +154,33 @@
   }
   
   .yatra-card:hover {
-    @apply shadow-2xl scale-[1.03] -translate-y-3;
+    @apply shadow-2xl;
+    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 25px 50px -12px hsl(var(--warm-clay) / 0.4);
   }
   
+  /* Enhanced Button System */
   .yatra-btn-primary {
-    @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold transition-all duration-300;
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold transition-all duration-300;
     background: linear-gradient(135deg, hsl(var(--forest-green)), hsl(var(--earth-brown)));
     color: hsl(var(--soft-cream));
-    font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    overflow: hidden;
   }
   
   .yatra-btn-primary:hover {
     @apply scale-105 shadow-2xl;
     background: linear-gradient(135deg, hsl(var(--earth-brown)), hsl(var(--forest-green)));
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
-  
+
   .yatra-btn-secondary {
-    @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold border-2 transition-all duration-300;
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-base font-semibold border-2 transition-all duration-300;
     background: transparent;
     color: hsl(var(--forest-green));
     border-color: hsl(var(--forest-green));
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   
   .yatra-btn-secondary:hover {
@@ -168,59 +188,14 @@
     color: hsl(var(--soft-cream));
     transform: translateY(-2px);
   }
-  
-  .yatra-btn-accent {
-    @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-semibold transition-all duration-300;
-    background: linear-gradient(135deg, hsl(var(--mustard-gold)), hsl(var(--warm-clay)));
-    color: hsl(var(--forest-green));
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
+
+  /* Compact Button Styles */
+  .yatra-btn-compact {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-300;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   
-  .yatra-btn-accent:hover {
-    @apply scale-105 shadow-2xl;
-    box-shadow: 0 10px 30px -8px hsl(var(--mustard-gold) / 0.5);
-    transform: translateY(-3px);
-  }
-
-  .wavy-divider {
-    position: relative;
-    height: 100px;
-    overflow: hidden;
-  }
-
-  .wavy-divider::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' fill='%23F9F7F4'%3E%3C/path%3E%3C/svg%3E") no-repeat;
-    background-size: cover;
-  }
-
-  .parallax-bg {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  .text-glow {
-    text-shadow: 0 0 20px hsl(var(--mustard-gold) / 0.5);
-  }
-
-  .floating-animation {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-10px) rotate(1deg); }
-    66% { transform: translateY(-5px) rotate(-1deg); }
-  }
-
+  /* Ripple Effect Enhancement */
   .ripple-effect {
     position: relative;
     overflow: hidden;
@@ -234,7 +209,7 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
   }
@@ -243,13 +218,155 @@
     width: 300px;
     height: 300px;
   }
+
+  /* Pulse Animation */
+  .pulse-gentle {
+    animation: pulse-gentle 4s ease-in-out infinite;
+  }
+
+  /* Text Glow Effect */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--mustard-gold) / 0.5);
+  }
+
+  /* Parallax Background */
+  .parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Enhanced Progress Bar */
+  .karma-progress-bar {
+    background: linear-gradient(90deg, 
+      hsl(var(--warm-clay) / 0.3) 0%, 
+      hsl(var(--mustard-gold) / 0.3) 100%);
+  }
+
+  .karma-progress-fill {
+    background: linear-gradient(90deg, 
+      hsl(var(--forest-green)) 0%, 
+      hsl(var(--mustard-gold)) 100%);
+  }
+
+  /* Scroll Reveal Animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger Delays */
+  .stagger-delay-1 { transition-delay: 0.1s; }
+  .stagger-delay-2 { transition-delay: 0.2s; }
+  .stagger-delay-3 { transition-delay: 0.3s; }
+  .stagger-delay-4 { transition-delay: 0.4s; }
+
+  /* Timeline Animation */
+  .timeline-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-path 3s ease-in-out forwards;
+  }
+
+  /* Floating Animation */
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Card Flip Animation */
+  .card-flip {
+    perspective: 1000px;
+  }
+
+  .card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .card-flip:hover .card-flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Hindi Text Enhancement */
+  .hindi-highlight {
+    background: linear-gradient(135deg, 
+      hsl(var(--mustard-gold) / 0.3), 
+      hsl(var(--warm-clay) / 0.3));
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: 2px solid hsl(var(--mustard-gold) / 0.5);
+    position: relative;
+  }
+
+  .hindi-highlight::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      hsl(var(--mustard-gold)), 
+      hsl(var(--warm-clay)));
+    border-radius: 2px;
+  }
 }
 
-/* Enhanced Animations */
+/* Enhanced Keyframe Animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  33% { 
+    transform: translateY(-15px) rotate(2deg); 
+  }
+  66% { 
+    transform: translateY(-8px) rotate(-1deg); 
+  }
+}
+
+@keyframes karma-pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.05); 
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 hsl(var(--mustard-gold) / 0.4); 
+  }
+  50% { 
+    box-shadow: 0 0 0 10px hsl(var(--mustard-gold) / 0); 
+  }
+}
+
+@keyframes draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(60px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -260,7 +377,7 @@
 @keyframes slideInStagger {
   from {
     opacity: 0;
-    transform: translateX(-40px) scale(0.95);
+    transform: translateX(-30px) scale(0.95);
   }
   to {
     opacity: 1;
@@ -269,21 +386,22 @@
 }
 
 @keyframes countUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes sparkle {
-  0%, 100% { 
+  from { 
     opacity: 0; 
-    transform: scale(0) rotate(0deg); 
+    transform: translateY(20px); 
   }
-  50% { 
+  to { 
     opacity: 1; 
-    transform: scale(1) rotate(180deg); 
+    transform: translateY(0); 
   }
 }
 
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Enhanced utility classes */
 .fade-in-up {
   animation: fadeInUp 0.8s ease-out;
 }
@@ -296,50 +414,32 @@
   animation: countUp 1s ease-out;
 }
 
-.sparkle {
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-/* Typography improvements */
+/* Enhanced Typography Classes */
 .hero-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.025em;
-  background: linear-gradient(135deg, 
-    hsl(var(--forest-green)), 
-    hsl(var(--earth-brown)), 
-    hsl(var(--mustard-gold)));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: gradientShift 4s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
 }
 
 .section-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
   line-height: 1.2;
 }
 
 .card-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.35rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.3;
 }
 
 /* Responsive spacing */
 .section-padding {
-  padding: clamp(4rem, 10vw, 8rem) clamp(1rem, 4vw, 3rem);
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
 }
 
 .container-max {
@@ -348,19 +448,34 @@
   padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
-/* Enhanced scroll animations */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.scroll-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
 }
 
-.stagger-delay-1 { transition-delay: 0.1s; }
-.stagger-delay-2 { transition-delay: 0.2s; }
-.stagger-delay-3 { transition-delay: 0.3s; }
-.stagger-delay-4 { transition-delay: 0.4s; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, 
+    hsl(var(--warm-clay)), 
+    hsl(var(--mustard-gold)));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, 
+    hsl(var(--forest-green)), 
+    hsl(var(--earth-brown)));
+}
+
+/* Hide scrollbar for horizontal scroll sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
