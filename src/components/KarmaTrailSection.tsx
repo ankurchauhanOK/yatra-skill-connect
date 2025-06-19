@@ -1,7 +1,9 @@
-
 import React from 'react';
 import { ArrowRight, Play, MapPin, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import WaterDroplet from './animations/WaterDroplet';
+import RippleEffect from './animations/RippleEffect';
+import KarmaOrb from './animations/KarmaOrb';
 
 const KarmaTrailSection = () => {
   const changemakers = [
@@ -15,7 +17,7 @@ const KarmaTrailSection = () => {
       duration: '6 months',
       impact: '200+ lives touched',
       rating: 4.9,
-      videoUrl: 'https://example.com/video1' // Placeholder for future video integration
+      videoUrl: 'https://example.com/video1'
     },
     {
       id: 2,
@@ -57,39 +59,17 @@ const KarmaTrailSection = () => {
 
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-green-50 relative overflow-hidden">
-      {/* Floating karma icons */}
+      {/* Water droplet animations */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div 
-          className="absolute top-20 left-20 text-2xl opacity-30"
-          animate={{ 
-            y: [0, -20, 0],
-            rotate: [0, 5, -5, 0],
-            opacity: [0.2, 0.4, 0.2] 
-          }}
-          transition={{ 
-            duration: 6, 
-            repeat: Infinity,
-            ease: "easeInOut" 
-          }}
-        >
-          🪔
-        </motion.div>
-        <motion.div 
-          className="absolute bottom-32 right-32 text-xl opacity-20"
-          animate={{ 
-            y: [0, -15, 0],
-            x: [0, 10, 0],
-            opacity: [0.1, 0.3, 0.1] 
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2 
-          }}
-        >
-          ✨
-        </motion.div>
+        <div className="absolute top-20 left-20">
+          <WaterDroplet size="sm" color="#70B5E6" delay={0} />
+        </div>
+        <div className="absolute bottom-32 right-32">
+          <WaterDroplet size="md" color="rgba(112, 181, 230, 0.4)" delay={3} />
+        </div>
+        <div className="absolute top-1/2 left-1/4">
+          <KarmaOrb size={40} intensity={0.5} className="opacity-60" />
+        </div>
       </div>
 
       <div className="container-max">
@@ -124,7 +104,6 @@ const KarmaTrailSection = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {changemakers.map((person, index) => (
               <motion.div
@@ -136,63 +115,68 @@ const KarmaTrailSection = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -10, scale: 1.02 }}
               >
-                <div className="yatra-card overflow-hidden relative bg-white shadow-lg border border-gray-100">
-                  {/* Video Thumbnail with Play Overlay */}
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                    <motion.img 
-                      src={person.image} 
-                      alt={person.name}
-                      className="w-full h-full object-cover"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    
-                    {/* Enhanced Play Button */}
-                    <motion.div 
-                      className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <div className="w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-xl backdrop-blur-sm border-2 border-white/50">
-                        <Play className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" />
-                      </div>
-                    </motion.div>
-
-                    {/* Rating Badge */}
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center space-x-1 shadow-sm">
-                      <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                      <span className="text-xs font-semibold text-gray-800">{person.rating}</span>
-                    </div>
-
-                    {/* Duration Badge */}
-                    <div className="absolute bottom-4 left-4 bg-blue-600/90 backdrop-blur-sm text-white rounded-full px-3 py-1.5 shadow-sm">
-                      <span className="text-xs font-semibold">{person.duration}</span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-center space-x-2 mb-3">
-                      <MapPin className="w-4 h-4 text-gray-500" />
-                      <span className="text-sm text-gray-600 font-medium">{person.location}</span>
-                    </div>
-                    
-                    <h3 className="card-title mb-2 text-gray-900">{person.name}</h3>
-                    <p className="text-sm text-blue-600 font-semibold mb-3">{person.role}</p>
-                    <p className="text-gray-600 leading-relaxed mb-4 text-sm">{person.story}</p>
-                    
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-green-600">{person.impact}</span>
-                      <motion.button 
-                        className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-300 text-sm"
-                        whileHover={{ x: 5 }}
+                <RippleEffect color="rgba(112, 181, 230, 0.2)" size={150}>
+                  <div className="yatra-card overflow-hidden relative bg-white shadow-lg border border-gray-100">
+                    {/* Video Thumbnail with Play Overlay */}
+                    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                      <motion.img 
+                        src={person.image} 
+                        alt={person.name}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      
+                      {/* Enhanced Play Button with water effect */}
+                      <motion.div 
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        whileHover={{ scale: 1.1 }}
                       >
-                        <span>View Journey</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </motion.button>
+                        <div className="relative">
+                          <div className="absolute inset-0 w-16 h-16 bg-blue-400/20 rounded-full blur-lg animate-pulse"></div>
+                          <div className="w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-xl backdrop-blur-sm border-2 border-white/50">
+                            <Play className="w-6 h-6 text-gray-900 ml-1" fill="currentColor" />
+                          </div>
+                        </div>
+                      </motion.div>
+
+                      {/* Rating Badge */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 flex items-center space-x-1 shadow-sm">
+                        <Star className="w-3 h-3 text-yellow-500 fill-current" />
+                        <span className="text-xs font-semibold text-gray-800">{person.rating}</span>
+                      </div>
+
+                      {/* Duration Badge */}
+                      <div className="absolute bottom-4 left-4 bg-blue-600/90 backdrop-blur-sm text-white rounded-full px-3 py-1.5 shadow-sm">
+                        <span className="text-xs font-semibold">{person.duration}</span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-center space-x-2 mb-3">
+                        <MapPin className="w-4 h-4 text-gray-500" />
+                        <span className="text-sm text-gray-600 font-medium">{person.location}</span>
+                      </div>
+                      
+                      <h3 className="card-title mb-2 text-gray-900">{person.name}</h3>
+                      <p className="text-sm text-blue-600 font-semibold mb-3">{person.role}</p>
+                      <p className="text-gray-600 leading-relaxed mb-4 text-sm">{person.story}</p>
+                      
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-green-600">{person.impact}</span>
+                        <motion.button 
+                          className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-300 text-sm"
+                          whileHover={{ x: 5 }}
+                        >
+                          <span>View Journey</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </motion.button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </RippleEffect>
               </motion.div>
             ))}
           </motion.div>
@@ -212,7 +196,7 @@ const KarmaTrailSection = () => {
           </div>
         </div>
 
-        {/* CTA */}
+        {/* CTA with enhanced ripple effect */}
         <motion.div 
           className="text-center mt-12"
           initial={{ opacity: 0 }}
@@ -220,17 +204,19 @@ const KarmaTrailSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.button 
-            className="yatra-btn-primary ripple-effect"
-            whileHover={{ 
-              scale: 1.02,
-              boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            🎥 Explore All Stories
-            <ArrowRight className="ml-3 w-5 h-5" />
-          </motion.button>
+          <RippleEffect color="rgba(59, 130, 246, 0.3)" size={200}>
+            <motion.button 
+              className="yatra-btn-primary ripple-effect relative overflow-hidden"
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              🎥 Explore All Stories
+              <ArrowRight className="ml-3 w-5 h-5" />
+            </motion.button>
+          </RippleEffect>
         </motion.div>
       </div>
     </section>

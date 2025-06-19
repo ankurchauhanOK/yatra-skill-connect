@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { Users, MapPin, Award, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import WaterDroplet from './animations/WaterDroplet';
 
 const TrustMetrics = () => {
   const metrics = [
@@ -13,6 +13,19 @@ const TrustMetrics = () => {
 
   return (
     <section className="py-16 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
+      {/* Water droplet effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-20">
+          <WaterDroplet size="sm" color="rgba(112, 181, 230, 0.6)" delay={0} />
+        </div>
+        <div className="absolute bottom-20 right-20">
+          <WaterDroplet size="md" color="rgba(232, 185, 81, 0.5)" delay={2} />
+        </div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <WaterDroplet size="lg" color="rgba(112, 181, 230, 0.3)" delay={1} />
+        </div>
+      </div>
+
       {/* Floating background elements */}
       <div className="absolute inset-0">
         <motion.div 
@@ -58,12 +71,31 @@ const TrustMetrics = () => {
           {metrics.map((metric, index) => (
             <motion.div
               key={index}
-              className="text-center group"
+              className="text-center group relative"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
+              {/* Ripple effect on stat reveal */}
+              <motion.div
+                className="absolute inset-0 rounded-full opacity-0"
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ 
+                  scale: [0, 2, 0],
+                  opacity: [0, 0.3, 0]
+                }}
+                transition={{ 
+                  duration: 1.5, 
+                  delay: index * 0.2 + 0.5,
+                  ease: "easeOut"
+                }}
+                style={{
+                  background: `radial-gradient(circle, rgba(112, 181, 230, 0.2) 0%, transparent 70%)`
+                }}
+                viewport={{ once: true }}
+              />
+              
               <motion.div 
                 className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-4 group-hover:bg-white/20 transition-all duration-300"
                 whileHover={{ scale: 1.1, rotate: 5 }}
@@ -82,6 +114,14 @@ const TrustMetrics = () => {
               </motion.div>
               
               <p className="text-gray-300 text-sm">{metric.label}</p>
+              
+              {/* Small droplet animation on hover */}
+              <motion.div
+                className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100"
+                transition={{ duration: 0.3 }}
+              >
+                <WaterDroplet size="sm" color="rgba(112, 181, 230, 0.8)" delay={0} />
+              </motion.div>
             </motion.div>
           ))}
         </div>

@@ -1,8 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import WaterDroplet from './animations/WaterDroplet';
+import RippleEffect from './animations/RippleEffect';
+import KarmaOrb from './animations/KarmaOrb';
+import WaterTransition from './animations/WaterTransition';
 
 const HeroSection = () => {
   return (
@@ -17,39 +20,23 @@ const HeroSection = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/80"></div>
         
-        {/* Floating Elements */}
-        <motion.div 
-          className="absolute top-20 right-20 w-6 h-6 text-yellow-300 opacity-60"
-          animate={{ 
-            y: [0, -20, 0],
-            rotate: [0, 10, -10, 0],
-            opacity: [0.4, 0.8, 0.4] 
-          }}
-          transition={{ 
-            duration: 6, 
-            repeat: Infinity,
-            ease: "easeInOut" 
-          }}
-        >
-          ✨
-        </motion.div>
+        {/* Water Droplet Elements */}
+        <div className="absolute top-20 right-20">
+          <WaterDroplet size="md" color="#70B5E6" delay={0} />
+        </div>
         
-        <motion.div 
-          className="absolute bottom-32 left-20 w-8 h-8 text-orange-300 opacity-50"
-          animate={{ 
-            y: [0, -15, 0],
-            x: [0, 10, 0],
-            opacity: [0.3, 0.7, 0.3] 
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2 
-          }}
-        >
-          🪔
-        </motion.div>
+        <div className="absolute bottom-32 left-20">
+          <WaterDroplet size="sm" color="#E8B951" delay={2} />
+        </div>
+        
+        <div className="absolute top-40 left-1/3">
+          <WaterDroplet size="lg" color="rgba(112, 181, 230, 0.6)" delay={1} />
+        </div>
+        
+        {/* Floating Karma Orb */}
+        <div className="absolute top-32 right-1/3 hidden lg:block">
+          <KarmaOrb size={60} intensity={0.8} />
+        </div>
       </div>
 
       <div className="relative container-max">
@@ -97,23 +84,27 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <Link to="/browse">
-                <motion.button 
-                  className="yatra-btn-compact bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 hover:shadow-lg ripple-effect pulse-gentle group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  🌿 Start Your Yatra
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </motion.button>
+                <RippleEffect color="rgba(255, 193, 7, 0.3)" size={120}>
+                  <motion.button 
+                    className="yatra-btn-compact bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 hover:shadow-lg ripple-effect pulse-gentle group relative overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    🌿 Start Your Yatra
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </motion.button>
+                </RippleEffect>
               </Link>
               <Link to="/host">
-                <motion.button 
-                  className="yatra-btn-compact border-2 border-white text-white hover:bg-white hover:text-gray-900"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  🌾 Host a Change-Maker
-                </motion.button>
+                <RippleEffect color="rgba(112, 181, 230, 0.2)" size={100}>
+                  <motion.button 
+                    className="yatra-btn-compact border-2 border-white text-white hover:bg-white hover:text-gray-900 relative overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    🌾 Host a Change-Maker
+                  </motion.button>
+                </RippleEffect>
               </Link>
             </motion.div>
 
@@ -191,16 +182,9 @@ const HeroSection = () => {
         </div>
       </div>
 
+      {/* Water Transition at bottom */}
       <div className="absolute bottom-0 left-0 w-full">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-8">
-          <motion.path 
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
-            fill="#F9F7F4"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, delay: 1 }}
-          />
-        </svg>
+        <WaterTransition />
       </div>
     </section>
   );
